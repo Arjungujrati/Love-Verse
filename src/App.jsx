@@ -86,6 +86,8 @@ export default function App() {
 >
   One More Surprise 🎁
 </button>
+ </div>
+)}
  {showSurprise && (
   <div
     style={{
@@ -98,7 +100,7 @@ export default function App() {
   >
     <h2>🌹 Happy Birthday My Jaanu 🌹</h2>
 
-    <p>
+       <p>
       ❤️ My Pasandida Aurat ❤️
       <br /><br />
       Tum meri life ka sabse beautiful part ho.
@@ -109,5 +111,9 @@ export default function App() {
       <br /><br />
       <b>Next Surprise 🎁</b>
     </p>
-  </div>
+    </div>
 )}
+      </div>
+    </div>
+  );
+}
