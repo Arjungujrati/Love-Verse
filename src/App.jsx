@@ -31,33 +31,35 @@ export default function App() {
           width: "80%",
         }}
       >
-        <h1>❤️ Happy Birthday My Love ❤️</h1>
-
-        <p>
-          A Special Surprise
-          <br />
-          Is Waiting For You...
-        </p>
-
         {!open && (
-         <button
-          onClick={() => setOpen(true)}
-          style={{
-            marginTop: "20px",
-            padding: "15px 30px",
-            borderRadius: "30px",
-            border: "none",
-            background: "#ff4d94",
-            color: "white",
-            fontSize: "18px",
-            cursor: "pointer",
-          }}
-        >
-          Open My Love 💖
-        </button>
-       )}
-        {open && (
-          <div
+  <>
+    <h1>❤️ Happy Birthday My Love ❤️</h1>
+
+    <p>
+      A Special Surprise
+      <br />
+      Is Waiting For You...
+    </p>
+
+    <button
+      onClick={() => setOpen(true)}
+      style={{
+        marginTop: "20px",
+        padding: "15px 30px",
+        borderRadius: "30px",
+        border: "none",
+        background: "#ff4d94",
+        color: "white",
+        fontSize: "18px",
+        cursor: "pointer",
+      }}
+    >
+      Open My Love 💖
+    </button>
+  </>
+)}
+        {open && !showSurprise && (
+  <div
             style={{
               marginTop: "25px",
               fontSize: "18px",
@@ -105,16 +107,7 @@ export default function App() {
       <br /><br />
       Happy Birthday My Love 🎂💖
       <br /><br />
-      <b>Forever Yours, Bachhu ❤️</b>
+      <b>Next Surprise 🎁</b>
     </p>
   </div>
 )}
-</div>
-
-  )}
-  
-      </div>
-    </div>
-  );
-}
-
