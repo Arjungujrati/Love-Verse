@@ -74,7 +74,10 @@ const [giftOpen, setGiftOpen] = useState(false);
             <br />
             Thank you for making my world beautiful ❤️
             <button
-  onClick={() => setGiftPage(true)}
+  onClick={() => {
+  setOpen(false);
+  setGiftPage(true);
+}}
   style={{
     marginTop: "20px",
     padding: "12px 25px",
@@ -101,7 +104,14 @@ const [giftOpen, setGiftOpen] = useState(false);
       textAlign: "center",
     }}
   >
-    <h2>💝 Ye Aapke Liye Madam Ji 💝</h2>
+    <h1
+  style={{
+    fontSize: "34px",
+    color: "#FFD700",
+  }}
+>
+  💝 Ye Aapke Liye Madam Ji 💝
+</h1>
 
     <div
       onClick={() => {
@@ -109,7 +119,7 @@ const [giftOpen, setGiftOpen] = useState(false);
   setGiftPage(false);
 }}
       style={{
-        fontSize: "90px",
+        fontSize: "190px",
         cursor: "pointer",
         marginTop: "20px",
       }}
