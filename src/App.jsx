@@ -6,6 +6,8 @@ export default function App() {
   const [showSurprise, setShowSurprise] = useState(false);
  const [finalSurprise, setFinalSurprise] = useState(false);
   const [surprise, setSurprise] = useState(false);
+  const [giftPage, setGiftPage] = useState(false);
+const [giftOpen, setGiftOpen] = useState(false);
   return (
     <div
       style={{
@@ -72,7 +74,7 @@ export default function App() {
             <br />
             Thank you for making my world beautiful ❤️
             <button
-  onClick={() => setShowSurprise(true)}
+  onClick={() => setGiftPage(true)}
   style={{
     marginTop: "20px",
     padding: "12px 25px",
@@ -87,6 +89,60 @@ export default function App() {
   One More Surprise 🎁
 </button>
  </div>
+)}
+{giftPage && !giftOpen && (
+  <div
+    style={{
+      marginTop: "25px",
+      padding: "25px",
+      borderRadius: "20px",
+      background: "rgba(255,255,255,0.12)",
+      boxShadow: "0 0 20px #ff4d94",
+      textAlign: "center",
+    }}
+  >
+    <h2>💝 Ye Aapke Liye Madam Ji 💝</h2>
+
+    <div
+      onClick={() => {
+  setGiftOpen(true);
+  setGiftPage(false);
+}}
+      style={{
+        fontSize: "90px",
+        cursor: "pointer",
+        marginTop: "20px",
+      }}
+    >
+      🎁
+    </div>
+
+    <p>Gift ko open karne ke liye 🎁 par click kijiye ✨</p>
+  </div>
+)}
+{giftOpen && (
+  <div
+    style={{
+      marginTop: "25px",
+      padding: "25px",
+      borderRadius: "20px",
+      background: "rgba(255,255,255,0.12)",
+      boxShadow: "0 0 20px #ff4d94",
+      textAlign: "center",
+    }}
+  >
+    <div style={{ fontSize: "90px" }}>🎂</div>
+
+    <h1 style={{ color: "#ffd700" }}>
+      🎉 Happy Birthday Jaanu 🎉
+    </h1>
+
+    <p style={{ fontSize: "20px" }}>
+      ❤️ Wishing You Endless Happiness ❤️
+      <br /><br />
+      Tum hamesha meri sabse special insan rahogi. 💖
+    </p>
+  </div>
 )}
  {showSurprise && (
   <div
