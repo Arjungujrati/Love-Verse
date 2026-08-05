@@ -1,14 +1,19 @@
+import { useState } from "react";
+
 export default function App() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div
       style={{
-        height: "100vh",
-        background: "linear-gradient(180deg,#09091f,#1b1035,#000)",
+        minHeight: "100vh",
+        background: "linear-gradient(180deg,#09091f,#2b0038)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         color: "white",
         fontFamily: "sans-serif",
+        overflow: "hidden",
       }}
     >
       <div
@@ -20,6 +25,7 @@ export default function App() {
           background: "rgba(255,255,255,0.08)",
           backdropFilter: "blur(10px)",
           boxShadow: "0 0 30px #ff4d94",
+          width: "80%",
         }}
       >
         <h1>❤️ Happy Birthday My Love ❤️</h1>
@@ -31,6 +37,7 @@ export default function App() {
         </p>
 
         <button
+          onClick={() => setOpen(true)}
           style={{
             marginTop: "20px",
             padding: "15px 30px",
@@ -44,6 +51,22 @@ export default function App() {
         >
           Open My Love 💖
         </button>
+
+        {open && (
+          <div
+            style={{
+              marginTop: "25px",
+              fontSize: "18px",
+              lineHeight: "1.6",
+            }}
+          >
+            💕 My Love,
+            <br />
+            You are the most important person in my life.
+            <br />
+            Thank you for making my world beautiful ❤️
+          </div>
+        )}
       </div>
     </div>
   );
