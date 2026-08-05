@@ -3,6 +3,7 @@ import { useState } from "react";
 
 export default function App() {
   const [open, setOpen] = useState(false);
+  const [showSurprise, setShowSurprise] = useState(false);
  const [finalSurprise, setFinalSurprise] = useState(false);
   const [surprise, setSurprise] = useState(false);
   return (
@@ -69,7 +70,7 @@ export default function App() {
             <br />
             Thank you for making my world beautiful ❤️
             <button
-  onClick={() => alert("You are my forever special person ❤️🎁")}
+  onClick={() => setShowSurprise(true)}
   style={{
     marginTop: "20px",
     padding: "12px 25px",
@@ -83,6 +84,31 @@ export default function App() {
 >
   One More Surprise 🎁
 </button>
+ {showSurprise && (
+  <div
+    style={{
+      marginTop: "25px",
+      padding: "25px",
+      borderRadius: "20px",
+      background: "rgba(255,255,255,0.12)",
+      boxShadow: "0 0 20px #ff4d94",
+    }}
+  >
+    <h2>🌹 Happy Birthday My Jaanu 🌹</h2>
+
+    <p>
+      ❤️ My Pasandida Aurat ❤️
+      <br /><br />
+      Tum meri life ka sabse beautiful part ho.
+      <br />
+      Tumhari smile meri duniya ko special banati hai.
+      <br /><br />
+      Happy Birthday My Love 🎂💖
+      <br /><br />
+      <b>Forever Yours, Bachhu ❤️</b>
+    </p>
+  </div>
+)}
 </div>
 
   )}
