@@ -66,8 +66,25 @@ export default function App() {
             You are the most important person in my life.
             <br />
             Thank you for making my world beautiful ❤️
-          </div>
-        )}
+            <button
+  onClick={() => alert("You are my forever special person ❤️🎁")}
+  style={{
+    marginTop: "20px",
+    padding: "12px 25px",
+    borderRadius: "25px",
+    border: "none",
+    background: "#ff4d94",
+    color: "white",
+    fontSize: "16px",
+    cursor: "pointer",
+  }}
+>
+  One More Surprise 🎁
+</button>
+</div>
+
+  )}
+  
       </div>
     </div>
   );
