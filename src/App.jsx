@@ -36,7 +36,8 @@ export default function App() {
           Is Waiting For You...
         </p>
 
-        <button
+        {!open && (
+         <button
           onClick={() => setOpen(true)}
           style={{
             marginTop: "20px",
@@ -51,7 +52,7 @@ export default function App() {
         >
           Open My Love 💖
         </button>
-
+       )}
         {open && (
           <div
             style={{
