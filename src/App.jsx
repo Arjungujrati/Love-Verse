@@ -1,8 +1,10 @@
+
 import { useState } from "react";
 
 export default function App() {
   const [open, setOpen] = useState(false);
-
+ const [finalSurprise, setFinalSurprise] = useState(false);
+  const [surprise, setSurprise] = useState(false);
   return (
     <div
       style={{
@@ -63,7 +65,7 @@ export default function App() {
           >
             💕 My Love,
             <br />
-            You are the most important person in my life.
+            You are the most important person in my lif❤️
             <br />
             Thank you for making my world beautiful ❤️
             <button
@@ -89,3 +91,4 @@ export default function App() {
     </div>
   );
 }
+
