@@ -1,185 +1,197 @@
-
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import "./App.css";
+ import girl2 from "./assets/girl2.jpg";
+ import memory1 from "./assets/memory/memory1.jpg";
+import memory2 from "./assets/memory/memory2.jpg";
+import memory3 from "./assets/memory/memory3.jpg";
+import memory4 from "./assets/memory/memory4.jpg";
+import memory5 from "./assets/memory/memory5.jpg";
+ import song from "./assets/love.mp3";
 
 export default function App() {
-  const [open, setOpen] = useState(false);
-  const [showSurprise, setShowSurprise] = useState(false);
- const [finalSurprise, setFinalSurprise] = useState(false);
-  const [surprise, setSurprise] = useState(false);
-  const [giftPage, setGiftPage] = useState(false);
-const [giftOpen, setGiftOpen] = useState(false);
+ const [page, setPage] = useState(0);
+ const audioRef = useRef(null);
+const [showPhoto, setShowPhoto] = useState(false);
+ const [musicPlay, setMusicPlay] = useState(false);
+const [memoryIndex, setMemoryIndex] = useState(0);
+ const memories = [
+  memory1,
+  memory2,
+  memory3,
+  memory4,
+  memory5
+];
+  useEffect(() => {
+  if(page === 3){
+    setTimeout(()=>{
+      setShowPhoto(true);
+    },1500);
+  }
+},[page]);
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "linear-gradient(180deg,#09091f,#2b0038)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        color: "white",
-        fontFamily: "sans-serif",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        style={{
-          textAlign: "center",
-          padding: "30px",
-          border: "2px solid #ff4d94",
-          borderRadius: "20px",
-          background: "rgba(255,255,255,0.08)",
-          backdropFilter: "blur(10px)",
-          boxShadow: "0 0 30px #ff4d94",
-          width: "80%",
-        }}
-      >
-        {!open && (
-  <>
-    <h1>❤️ Happy Birthday My Love ❤️</h1>
+  <div className="app">
+
+  <audio
+  id="mySong"
+  src={song}
+  autoPlay
+  loop
+/>
+
+<button
+  className="music-btn"
+  onClick={() => {
+    document.getElementById("mySong").play();
+  }}
+>
+  🎵 Play Our Song ❤️
+</button>
+
+    <div className="bg-hearts">
+  <span>❤️</span>
+  <span>💕</span>
+  <span>💖</span>
+  <span>💗</span>
+  <span>💞</span>
+  <span>💘</span>
+  <span>💝</span>
+  <span>🌹</span>
+</div>
+      {page === 0 && (
+        <div className="card">
+          <h1>❤️ Happy Birthday ❤️</h1>
+          <h2>🌹 Meri Pasandida Aurat 🌹</h2>
+
+          <p>
+            Aaj ka din sirf aapke naam...
+            <br />
+            Maine aapke liye ek chhota sa surprise banaya hai. ❤️
+          </p>
+
+          <button onClick={() => setPage(1)}>
+            Open My Love ❤️
+          </button>
+        </div>
+      )}
+
+      {page === 1 && (
+        <div className="card">
+          <h1>💌 Meri Jaan</h1>
+
+         <p>
+  Tumhari tarif me kya kahu madam ji ❤️
+  <br /><br />
+  Meri murjhai hui zindagi mein gulab ho tum 🌹
+  <br /><br />
+  I Love You Puchki 😚🫀
+</p>
+
+           
+        <button onClick={() => setPage(2)}>
+          Next Surprise 🎁
+          </button>
+        </div>
+      )}
+           {page === 2 && (
+        <div className="card">
+          <h1>🎁 Surprise Gift 🎁</h1>
+
+          <div
+  className="gift-box"
+  onClick={() => setPage(3)}
+>
+  🎁
+</div>
+
+          <p>Gift ko touch karo... ❤️</p>
+        </div>
+      )}
+
+      {page === 3 && (
+  <div className="card">
+  <div className="stars">
+  ✨ ⭐ ✨ ⭐ ✨
+</div>
+    <h1>❤️ Happy Birthday Jaan ❤️</h1>
+
+    {showPhoto && (
+  <img 
+    className="birthday-photo" 
+    src={girl2} 
+    alt="My Love" 
+  />
+)}
+
+    <div className="cake">
+      🎂
+    </div>
+
+    {showPhoto && (
+  <h2>❤️ Happy Birthday Jaan ❤️</h2>
+)}
 
     <p>
-      A Special Surprise
-      <br />
-      Is Waiting For You...
-    </p>
+  Ye chotta sa surprise aapke liye madam ji ❤️
+  <br /><br />
+  Mene socha kuch naya karte hain,
+  isliye mene aisa kiya. ✨
+  <br /><br />
+  Vese to isse bhi bahut achha deserve karti ho tum,
+  par meri taraf se itna sa hi hai madam ji 😚
+</p>
 
-    <button
-      onClick={() => setOpen(true)}
-      style={{
-        marginTop: "20px",
-        padding: "15px 30px",
-        borderRadius: "30px",
-        border: "none",
-        background: "#ff4d94",
-        color: "white",
-        fontSize: "18px",
-        cursor: "pointer",
-      }}
-    >
-      Open My Love 💖
+    <button onClick={() => setPage(4)}>
+      Open Letter 💌
     </button>
-  </>
+  </div>
 )}
-        {open && !showSurprise && (
-  <div
-            style={{
-              marginTop: "25px",
-              fontSize: "18px",
-              lineHeight: "1.6",
-            }}
-          >
-            💕 My Love,
-            <br />
-            You are the most important person in my lif❤️
-            <br />
-            Thank you for making my world beautiful ❤️
-            <button
-  onClick={() => {
-  setOpen(false);
-  setGiftPage(true);
-}}
-  style={{
-    marginTop: "20px",
-    padding: "12px 25px",
-    borderRadius: "25px",
-    border: "none",
-    background: "#ff4d94",
-    color: "white",
-    fontSize: "16px",
-    cursor: "pointer",
-  }}
->
-  One More Surprise 🎁
+     {page === 4 && (
+  <div className="card">
+    <h1>💌 My Letter 💌</h1>
+
+    <p>
+      Meri Jaan ❤️
+      <br /><br />
+      Tum meri zindagi ki sabse khoobsurat kahani ho.
+      <br /><br />
+      Tumhari hasi meri sabse badi khushi hai.
+      <br /><br />
+      Happy Birthday Jaanu... 🌹❤️
+      <br /><br />
+      Hamesha muskuraati rehna. 💖
+    </p>
+    <button onClick={() => setPage(5)}>
+  Our Cute Memories 💖
 </button>
- </div>
-)}
-{giftPage && !giftOpen && (
-  <div
-    style={{
-      marginTop: "25px",
-      padding: "25px",
-      borderRadius: "20px",
-      background: "rgba(255,255,255,0.12)",
-      boxShadow: "0 0 20px #ff4d94",
-      textAlign: "center",
-    }}
-  >
-    <h1
-  style={{
-    fontSize: "34px",
-    color: "#FFD700",
-  }}
->
-  💝 Ye Aapke Liye Madam Ji 💝
-</h1>
 
-    <div
-      onClick={() => {
-  setGiftOpen(true);
-  setGiftPage(false);
-}}
-      style={{
-        fontSize: "190px",
-        cursor: "pointer",
-        marginTop: "20px",
-      }}
-    >
-      🎁
-    </div>
-
-    <p>Gift ko open karne ke liye 🎁 par click kijiye ✨</p>
+  
   </div>
 )}
-{giftOpen && (
-  <div
-    style={{
-      marginTop: "25px",
-      padding: "25px",
-      borderRadius: "20px",
-      background: "rgba(255,255,255,0.12)",
-      boxShadow: "0 0 20px #ff4d94",
-      textAlign: "center",
-    }}
-  >
-    <div style={{ fontSize: "90px" }}>🎂</div>
+ {page === 5 && (
+  <div className="card">
+    <h1>💖 Your Cute Memories 💖</h1>
 
-    <h1 style={{ color: "#ffd700" }}>
-      🎉 Happy Birthday Jaanu 🎉
-    </h1>
-
-    <p style={{ fontSize: "20px" }}>
-      ❤️ Wishing You Endless Happiness ❤️
+    <img
+  key={memoryIndex}
+  className="memory-photo"
+  src={memories[memoryIndex]}
+  alt="Memory"
+  onClick={() =>
+    setMemoryIndex((memoryIndex + 1) % memories.length)
+  }
+/>
+ <p className="click-text">
+  👆 Click photo to see next memory 💕
+</p>
+    <p>
+      Kuch yaadein hamesha special hoti hain ❤️
       <br /><br />
-      Tum hamesha meri sabse special insan rahogi. 💖
+      Ye choti choti memories mere liye bahut precious hain ✨
     </p>
+
+   
   </div>
 )}
- {showSurprise && (
-  <div
-    style={{
-      marginTop: "25px",
-      padding: "25px",
-      borderRadius: "20px",
-      background: "rgba(255,255,255,0.12)",
-      boxShadow: "0 0 20px #ff4d94",
-    }}
-  >
-    <h2>🌹 Happy Birthday My Jaanu 🌹</h2>
-
-       <p>
-      ❤️ My Pasandida Aurat ❤️
-      <br /><br />
-      Tum meri life ka sabse beautiful part ho.
-      <br />
-      Tumhari smile meri duniya ko special banati hai.
-      <br /><br />
-      Happy Birthday My Love 🎂💖
-      <br /><br />
-      <b>Next Surprise 🎁</b>
-    </p>
-    </div>
-)}
-      </div>
     </div>
   );
 }
