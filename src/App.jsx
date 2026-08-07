@@ -37,7 +37,7 @@ const [memoryIndex, setMemoryIndex] = useState(0);
   }
 },[page]);
  useEffect(() => {
-  const birthday = new Date("2009-08-11T00:00:00");
+  const birthday = new Date("2010-08-11T00:00:00");
 
   const updateAge = () => {
     const now = new Date();
@@ -265,7 +265,7 @@ if (months < 0) {
     </h2>
 
     <p className="since-text">
-      💕 Since 11 August 2009 💕
+      💕 Since 11 August 2010 💕
     </p>
 
     <div className="time-grid">
@@ -313,7 +313,7 @@ if (months < 0) {
     </div>
 
     <p className="final-message">
-      💖 Every second since 11 August 2009
+      💖 Every second since 11 August 2010
       <br />
       has made this world more beautiful.
       <br /><br />
