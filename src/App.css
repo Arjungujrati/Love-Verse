@@ -346,3 +346,102 @@ overflow-y: auto;
     transform:scale(1.15);
   }
 }
+ .lock-screen{
+  position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  right:0 !important;
+  bottom:0 !important;
+  width:100vw !important;
+  height:100vh !important;
+  z-index:99999 !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  padding:20px !important;
+  box-sizing:border-box !important;
+
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255,20,147,.22), transparent 45%),
+    #120018 !important;
+
+  overflow-y:auto !important;
+}
+
+.lock-card{
+  width:100% !important;
+  max-width:340px !important;
+  padding:28px 22px !important;
+  box-sizing:border-box !important;
+
+  text-align:center !important;
+  border-radius:28px !important;
+
+  background:rgba(255,255,255,.10) !important;
+  backdrop-filter:blur(18px) !important;
+
+  border:1px solid rgba(255,255,255,.15) !important;
+  box-shadow:0 0 40px rgba(255,20,147,.30) !important;
+}
+
+.lock-heart{
+  font-size:45px !important;
+  margin-bottom:8px !important;
+}
+
+.lock-card h1{
+  margin:5px 0 8px !important;
+  color:#fff !important;
+  font-size:32px !important;
+}
+
+.lock-card p{
+  color:#ffd6ea !important;
+  margin:0 0 15px !important;
+}
+
+.pin-display{
+  height:45px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  font-size:28px !important;
+  letter-spacing:10px !important;
+  color:#fff !important;
+
+  margin-bottom:18px !important;
+}
+
+.number-pad{
+  width:100% !important;
+
+  display:grid !important;
+  grid-template-columns:repeat(3, 1fr) !important;
+  gap:10px !important;
+}
+
+.number-pad button{
+  width:100% !important;
+  height:58px !important;
+
+  margin:0 !important;
+  padding:0 !important;
+
+  border:none !important;
+  border-radius:18px !important;
+
+  background:rgba(255,20,147,.85) !important;
+  color:#fff !important;
+
+  font-size:21px !important;
+  font-weight:bold !important;
+
+  box-shadow:0 5px 15px rgba(0,0,0,.20) !important;
+}
+
+.number-pad button:active{
+  transform:scale(.94) !important;
+}

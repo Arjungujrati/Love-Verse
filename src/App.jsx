@@ -9,6 +9,8 @@ import memory5 from "./assets/memory/memory5.jpg";
  import song from "./assets/love.mp3";
 
 export default function App() {
+ const [locked, setLocked] = useState(true);
+const [pin, setPin] = useState("");
  const [page, setPage] = useState(0);
  const audioRef = useRef(null);
 const [showPhoto, setShowPhoto] = useState(false);
@@ -78,23 +80,94 @@ if (months < 0) {
       seconds: totalSeconds,
     });
   };
+ 
+ updateAge();
+const timer = setInterval(updateAge, 1000);
 
-  updateAge();
-  const timer = setInterval(updateAge, 1000);
-
-  return () => clearInterval(timer);
+return () => clearInterval(timer);
 }, []);
-  return (
-  <div className="app">
 
-  <audio
-  id="mySong"
-  src={song}
-  autoPlay
-  loop
-/>
+ const unlockLoveVerse = () => {
+  if (pin === "143") {
+    const audio = document.getElementById("mySong");
 
-<button
+    if (audio) {
+      audio.play().catch(() => {});
+    }
+
+    setLocked(false);
+  } else {
+    setPin("");
+    alert("Wrong Code ❤️");
+  }
+};
+
+ return (
+  <>
+    <audio
+      id="mySong"
+      src={song}
+      loop
+    />
+
+    {locked && (
+  <div className="lock-screen">
+
+        <div className="lock-card">
+
+          <div className="lock-heart">🔐</div>
+
+          <h1>LoveVerse ❤️</h1>
+
+          <p>Enter Secret Code</p>
+
+          <div className="pin-display">
+            {pin ? "•".repeat(pin.length) : "•••"}
+          </div>
+
+          <div className="number-pad">
+
+            {[1,2,3,4,5,6,7,8,9].map((num) => (
+              <button
+                key={num}
+                onClick={() => {
+                  if (pin.length < 3) {
+                    setPin(pin + num);
+                  }
+                }}
+              >
+                {num}
+              </button>
+            ))}
+
+            <button onClick={() => setPin("")}>
+              ⌫
+            </button>
+
+            <button
+              onClick={() => {
+                if (pin.length < 3) {
+                  setPin(pin + "0");
+                }
+              }}
+            >
+              0
+            </button>
+
+            <button onClick={unlockLoveVerse}>
+              ❤️
+            </button>
+
+          </div>
+
+        </div>
+      </div>
+    )}
+
+       {!locked && (
+      <div className="app">
+
+        <button
   className="music-btn"
   onClick={() => {
     document.getElementById("mySong").play();
@@ -319,9 +392,10 @@ if (months < 0) {
       <br /><br />
       🎉 Happy Birthday My Love ❤️
     </p>
-
-  </div>
+     </div>
 )}
-    </div>
-  );
+      </div>
+)}
+</>
+);
 }
