@@ -14,6 +14,14 @@ export default function App() {
 const [showPhoto, setShowPhoto] = useState(false);
  const [musicPlay, setMusicPlay] = useState(false);
 const [memoryIndex, setMemoryIndex] = useState(0);
+ const [age, setAge] = useState({
+  years: 0,
+  months: 0,
+  days: 0,
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+});
  const memories = [
   memory1,
   memory2,
@@ -28,6 +36,54 @@ const [memoryIndex, setMemoryIndex] = useState(0);
     },1500);
   }
 },[page]);
+ useEffect(() => {
+  const birthday = new Date("2009-08-11T00:00:00");
+
+  const updateAge = () => {
+    const now = new Date();
+    const diff = now - birthday;
+
+    const totalSeconds = Math.floor(diff / 1000);
+    const totalMinutes = Math.floor(diff / (1000 * 60));
+    const totalHours = Math.floor(diff / (1000 * 60 * 60));
+    const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    let years = now.getFullYear() - birthday.getFullYear();
+let months = now.getMonth() - birthday.getMonth();
+let days = now.getDate() - birthday.getDate();
+
+if (days < 0) {
+  months--;
+
+  const previousMonth = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    0
+  );
+
+  days += previousMonth.getDate();
+}
+
+if (months < 0) {
+  years--;
+  months += 12;
+}
+
+    setAge({
+      years,
+      months,
+      days: totalDays,
+      hours: totalHours,
+      minutes: totalMinutes,
+      seconds: totalSeconds,
+    });
+  };
+
+  updateAge();
+  const timer = setInterval(updateAge, 1000);
+
+  return () => clearInterval(timer);
+}, []);
   return (
   <div className="app">
 
@@ -188,8 +244,82 @@ const [memoryIndex, setMemoryIndex] = useState(0);
       <br /><br />
       Ye choti choti memories mere liye bahut precious hain ✨
     </p>
+<button onClick={() => setPage(6)}>
+  Final Surprise 🎂
+</button>
 
    
+  </div>
+)}
+ {page === 6 && (
+  <div className="card final-card">
+
+    <div className="stars">
+      ✨ 💖 ✨ 💖 ✨
+    </div>
+
+    <h1>🎂 Happy Birthday My Love ❤️</h1>
+
+    <h2 className="time-title">
+      ⏳ Your Beautiful Journey
+    </h2>
+
+    <p className="since-text">
+      💕 Since 11 August 2009 💕
+    </p>
+
+    <div className="time-grid">
+
+      <div className="time-box">
+        <span>🎉</span>
+        <strong>{age.years}</strong>
+        <small>Years</small>
+      </div>
+
+      <div className="time-box">
+        <span>📅</span>
+        <strong>{age.months}</strong>
+        <small>Months</small>
+      </div>
+
+      <div className="time-box">
+        <span>🌸</span>
+        <strong>{age.days}</strong>
+        <small>Days</small>
+      </div>
+
+      <div className="time-box">
+        <span>⏰</span>
+        <strong>{age.hours}</strong>
+        <small>Hours</small>
+      </div>
+
+      <div className="time-box">
+        <span>💫</span>
+        <strong>{age.minutes}</strong>
+        <small>Minutes</small>
+      </div>
+
+      <div className="time-box">
+        <span>💖</span>
+        <strong>{age.seconds}</strong>
+        <small>Seconds</small>
+      </div>
+
+    </div>
+
+    <div className="birthday-heart">
+      💗
+    </div>
+
+    <p className="final-message">
+      💖 Every second since 11 August 2009
+      <br />
+      has made this world more beautiful.
+      <br /><br />
+      🎉 Happy Birthday My Love ❤️
+    </p>
+
   </div>
 )}
     </div>
